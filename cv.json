@@ -1,0 +1,20 @@
+{
+    "experience":[
+        {
+            "company":"Company Name",
+            "position":"Position",
+            "location":"Location",
+            "start":"Start Date",
+            "end":"End Date",
+            "description":"Description"
+        },
+        {
+            "company":"Company Name",
+            "position":"Position",
+            "location":"Location",
+            "start":"Start Date",
+            "end":"End Date",
+            "description":"Description"
+        }
+    ]
+}
