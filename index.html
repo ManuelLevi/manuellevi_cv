@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            /* draw lines between each experience div */
+
+            body {
+                background-color: #fafafa;
+            }
+
+            h1 {
+                padding-top: 2.5em;
+                font-size: 5em;
+                font-weight: 800;
+            }
+
+            h2 {
+                margin-top: 1em;
+                margin-bottom: 0.5em;
+                font-weight: 600;
+                font-size: 4em;
+            }
+
+            h3 {
+                font-weight: 600;
+                font-size: 2em;
+            }
+
+            .experience {
+                background-color: #2a2928;
+                color: white;
+                padding-bottom: 2em;
+            }
+
+            .education {
+                padding-bottom: 2em;
+            }
+
+            .project {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin-bottom: 3em;
+                margin-top: 3em;
+                padding-top: 2em;
+            }
+
+            .company-name {
+                font-weight: 600;
+            }
+
+            .dates {
+                font-weight: 400;
+            }
+
+            .duration::before {
+                content: "·";
+                margin-right: 0.5em;
+            }
+
+            .duration {
+                margin-left: 0.5em;
+                font-weight: 300;
+            }
+
+            .location {
+                font-weight: 400;
+            }
+
+            .description {
+                margin-top: 2.5em;
+                font-weight: 400;
+            }
+
+            .course {
+                padding-top: 2.5em;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .issuer_logo {
+                width: 100px;
+                height: 75px;
+                object-fit: contain;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        
+        <div id="app">
+            <div class="container">
+                <h1>Manuel Levi</h1>
+                <h4>Leading by Impact. Strategic Data Science and Artificial Intelligence.</h4>
+            </div>
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col-8 pr-5">
+                        <h3>Summary</h3>
+                        <p>Born in the university city of Coimbra, my family bought our first computer when I was 9 yrs old.
+                        This computer was slow and internet access was scarce. This meant, that unlike most of my
+                        friends, I
+                        wouldn't spend any time playing games or browsing the 90's internet. Instead, I found fun in
+                        programming scripts and my own games as a kid.</p>
+                        <p>Today, I am a data scientist with experience working with +8 figure companies and market leaders
+                        around the world: retail, investing, banking, medical imaging and others.</p>
+                        <p>I help business owners, entrepreneurs, founders and senior executives filter out the noise in AI
+                        and
+                        data science and invest only in truly profitable work, aligned with the existing company
+                        strategy.
+                        Through the definition of a data strategy, companies know what they should and what they
+                        shouldn't
+                        invest in when applying data science to their business.</p>
+                        <p>Through my company, Enlightenment.ai, I provide a solution to the execution of the solutions to
+                        these
+                        problems.</p>
+                        <p>I have worked with various market leaders in Singapore, London, Denmark and Portugal. This was
+                        only
+                        possible because I was lucky enough to be invited to apply AI as a research scientist for top
+                        research labs including MIT's Singapore lab - SMART, and CDV or amilab in Portugal, before
+                        companies
+                        were doing it.</p>
+                    </div>
+                    <div class="col-4">
+                        <h3>Contact</h3>
+                        <div class="d-flex flex-column mt-2">
+                            <span>Email: manuellevi@enlightenment.ai</span>
+                            <span>LinkedIn: <a
+                                href="https://www.linkedin.com/in/manuellevi/">linkedin.com/in/manuellevi/</a>
+                            </span>
+                        </div>
+                        <h3 class="mt-4">Top Skills</h3>
+                        <div class="d-flex flex-column mt-2">
+                            <span> ≛ Data Strategy</span>
+                            <span> ≛ Business Strategy</span>
+                            <span> ≛ Artificial Intelligence</span>
+                            <span> ≛ Data Science</span>
+                            <span> ≛ Python</span>
+                            <span> ≛ Machine Learning</span>
+                            <span> ≛ Deep Learning</span>
+                            <span> ≛ Computer Vision</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="eai container">
+                <h2>Enlightenment.ai</h2>
+                <p>Enlightenment.ai is a data science and artificial intelligence consultancy that helps companies apply data
+                science to their business. We help companies define a data strategy, and then execute it.</p>
+                <p>The following list shows a number of relevant projects that I've helped develop.</p>
+
+                <div class="project" v-for="item in eai_projects">
+                    {{ item.message }}
+                    <h3 class="role">{{item.name}}</h3>
+                    <div class="row">
+                        <div class="col-4 d-flex flex-column">
+                            <span class="company-name">{{item.company}}</span>
+                            <span class="font-weight-light">{{item.relationship}}</span>
+                            <span>{{item.location}}</span>
+                            <span class="dates">{{item.date}}</span>
+                        </div>
+                        <div class="col-8">
+                            <div style="white-space: pre-line">{{item.description}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="container">
+                <h2>Experience</h2>
+                <div class="project">
+                    <div class="row">
+                        <div class="col-4 d-flex flex-column">
+                            <h3 class="role">Data Science Advisor</h3>
+                            <span class="company-name">Hire Space</span>
+                            <span class="dates">Sep 2017 - Sep 2018<span class="duration">1 yr 1 mo</span>
+                            </span>
+                            <span class="location">London, United Kingdom</span>
+                        </div>
+                        <div class="col-8 description">
+                            <div> As the UK's leading venue marketplace, Hire Space hired me as a consultant to provide
+                            expert advice on the application of data science and artificial intelligence (particularly
+                            machine learning) to their business.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="row">
+                        <div class="col-4 d-flex flex-column">
+                            <h3 class="role">Contract Data Scientist</h3>
+                            <span class="company-name">Kheiron
+                            Medical</span>
+                            <span class="dates">Jan 2017 - Sep 2017<span class="duration">9
+                                mos</span>
+                            </span>
+                            <span class="location">London, United Kingdom</span>
+                        </div>
+                        <div class="col-8 description">
+                            <span>Kheiron Medical is a medical company that uses state-of-the-art
+                            machine learning technologies, such as artificial neural networks, to produce
+                            top-performance medical imagining tools. During this time I've developed algorithms to
+                            detect cancer lesions using a mixture of traditional computer vision and deep
+                            learning.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="row">
+                        <div class="col-4 d-flex flex-column">
+                            <h3 class="role">Lead Data Scientist</h3>
+                            <span class="company-name">Citizen Pace</span>
+                            <span class="dates">Sep 2015 - Dec 2016<span class="duration">1 yr 4 mos</span>
+                            </span>
+                            <span class="location">London, United Kingdom</span>
+                        </div>
+                        <div class="description col-8">
+                            <span>Citizen Pace is revolutionizing the way OOH advertising works
+                            by improving both the planning of campaigns and their evaluation, making it simple to track
+                            different return metrics. The company aims to provide data-driven insights in near real-time
+                            about the preferences and types of people in a specific area and time, around cities. It
+                            does this by having a deep understanding of the movement of crowds, extracted from a variety
+                            of datasets, ranging from social networks to transportation data.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="row">
+                        <div class="col-4 d-flex flex-column">
+                            <h3 class="role">Technology Entrepreneur</h3>
+                            <span class="company-name">Entrepreneur
+                            First</span>
+                            <span class="dates">Mar 2016 - May 2016<span class="duration">3
+                                mos</span>
+                            </span>
+                            <span class="location">London, United Kingdom</span>
+                        </div>
+                        <div class="col-8 description">
+                            <span>Entrepreneur First is Europe's leading pre-seed investment
+                            program, with less than 3% acceptance rate, for technical founders who want to work on hard
+                            problems. 55% of their portfolio is educated at Oxford, Cambridge, or Imperial College
+                            London, and worked before in companies such as Google, Palantir, Amazon, Apple, Airbnb, and
+                            Uber.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="row">
+                        <div class="col-4 d-flex flex-column">
+                            <h3 class="role">Invited Research Scientist</h3>
+                            <span class="company-name">Massachusetts
+                            Institute of Technology (MIT) Research Center "SMART"</span>
+                            <span class="dates">Apr 2015 -
+                            Sep 2015<span class="duration">6 mos</span>
+                            </span>
+                            <span class="location">Singapore</span>
+                        </div>
+                        <div class="col-8 description">
+                            <span>Development of a parsimonious sensing system using Active
+                            Learning and Gaussian Processes. Development of a predictive system for events happening in
+                            Singapore and their effect on the country's transportation systems. I've built a system
+                            capable of Identifying traffic anomalies and developing a system capable of querying
+                            different search engines and automatically extracting information that would justify such
+                            anomalies.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="row">
+                        <div class="col-4 d-flex flex-column">
+                            <h3 class="role">Research Fellow</h3>
+                            <span class="company-name">CISUC (Centre for Informatics
+                            and Systems of the University of Coimbra)</span>
+                            <span class="dates">Jul 2014 - Jul 2015<span class="duration">1 yr 1 mo</span>
+                            </span>
+                            <span class="location">AMILAB, Cognitive and
+                            Media Systems Group, Coimbra, PortugalAMILAB, Cognitive and Media Systems Group, Coimbra,
+                            Portugal</span>
+                        </div>
+                        <div class="col-8 description">
+                            <span>Project InfoCrowds - Information Retrieval techniques and
+                            application of active learning in the topic of crowds mobility management using social web
+                            data.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="row">
+                        <div class="col-4 d-flex flex-column">
+                            <h3 class="role">Data Scientist</h3>
+                            <span class="company-name">SONAE</span>
+                            <span class="dates">May
+                            2014 - Jul 2014<span class="duration">3 mos</span>
+                            </span>
+                            <span class="location">Portugal</span>
+                        </div>
+                        <div class="col-8 description">
+                            <span>SONAE is present in more than 60 countries, with more than
+                            40.000 employees. CDV was working with Sonae Distribuição, the largest retailer in Portugal.
+                            A team at CDV was hired by SONAE to do some analysis on the client data they have been
+                            collecting for years. My team was exploring the data SONAE has been collecting for years to
+                            give them insights about what they could do with it. Besides interactive visualizations, we
+                            were working on a way to improve their operational inventory system and reduce the waste of
+                            perishable goods, study cannibalism within the brand and study people's buying
+                            habits.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="row">
+                        <div class="col-4 d-flex flex-column">
+                            <h3 class="role">Research Fellow</h3>
+                            <span class="company-name">CISUC (Centre for Informatics
+                            and Systems of the University of Coimbra)</span>
+                            <span class="dates">Dec 2013 - May 2014<span class="duration"> 6 mos</span>
+                            </span>
+                            <span class="location">Coimbra, Portugal</span>
+                        </div>
+                        <div class="col-8 description">
+                            <span>Project RECARDI - Used computer vision and machine learning to
+                            build Content-based Image Retrieval (CBIR) systems.Project RECARDI - Used computer vision
+                            and machine learning to build Content-based Image Retrieval (CBIR) systems.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="row">
+                        <div class="col-4 d-flex flex-column">
+                            <h3 class="role">Research Fellow</h3>
+                            <span class="company-name">CISUC (Centre for Informatics
+                            and Systems of the University of Coimbra)</span>
+                            <span class="dates">Aug 2013 - Dec 2013<span class="duration">5 mos</span>
+                            </span>
+                            <span class="location">Coimbra, Portugal</span>
+                        </div>
+                        <div class="col-8 description">
+                            <span>The objective of project SBIRC ( Style Based Image Retrieval
+                            and Classification ) was to use machine learning techniques to classify images into
+                            different styles. I was responsible for extracting the image features that would then be
+                            used to characterize each image.The objective of project SBIRC ( Style Based Image Retrieval
+                            and Classification ) was to use machine learning techniques to classify images into
+                            different styles. I was responsible for extracting the image features that would then be
+                            used to characterize each image.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="row">
+                        <div class="col-4 d-flex flex-column">
+                            <h3 class="role">Development Lead</h3>
+                            <span class="company-name">Bark it!</span>
+                            <span class="dates">Feb 2013 - Sep 2013<span class="duration">8 mos</span>
+                            </span>
+                            <span class="location">Coimbra, Portugal</span>
+                        </div>
+                        <div class="col-8 description">
+                            <span>Bark it! was a technology startup backed by the Portuguese
+                            Government. During my work there I led two other computer scientists whilst creating a
+                            distributed system similar to a Domain Name Server for phone numbers. I've also worked on a
+                            solution to try to predict what phone numbers people would call at specific times and
+                            places.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="row">
+                        <div class="col-4 d-flex flex-column">
+                            <h3 class="role">Freelance Python Developer</h3>
+                            <span class="company-name">Self-employed</span>
+                            <span class="dates">Sep 2012 - Jul 2013<span class="duration">11 mos</span>
+                            </span>
+                            <span class="location">Coimbra, Portugal</span>
+                        </div>
+                        <div class="col-8 description">
+                            <span>I was a freelance Python developer while I studying. I've done
+                            both websites and small private projects for individuals and small companies.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="education">
+                <div class="container">
+                    <h2>Education</h2>
+                    <div class="row mt-3 pt-3">
+                        <div class="course col-6">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img class="issuer_logo" src="logos/udemy-logo-vector.svg" alt="Udemy">
+                                </div>
+                                <div class="col-9 d-flex flex-column">
+                                    <span class="course_name">BPMN 2.0 with Brian: A
+                                    Beginner's Guide</span>
+                                    <span class="issuer">Udemy</span>
+                                    <span
+                                    class="issue_date">Issued Jul 2020</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course col-6">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img class="issuer_logo" src="logos/packt-publishing-vector-logo.svg"
+                                    alt="Packt Publishing">
+                                </div>
+                                <div class="col-9 d-flex flex-column">
+                                    <span class="course_name">Deep Learning with
+                                    Tensor</span>
+                                    <span class="issuer">Packt Publishing</span>
+                                    <span
+                                    class="issue_date">Issued Nov 2016</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course col-6">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img class="issuer_logo" src="logos/gt-raster-logo.png"
+                                    alt="Georgia Institute of Technology">
+                                </div>
+                                <div class="col-9 d-flex flex-column">
+                                    <span class="course_name">Computational Investing,
+                                    Part I
+                                    (with Distinction)</span>
+                                    <span class="issuer">Georgia Institute of
+                                    Technology</span>
+                                    <span class="issue_date">Issued Nov 2014</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course col-6">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img class="issuer_logo" src="logos/university-of-pennsylvania-vector-logo.svg"
+                                    alt="University of Pennsylvania">
+                                </div>
+                                <div class="col-9 d-flex flex-column">
+                                    <span class="course_name">Networked Life (with
+                                    Distinction)</span>
+                                    <span class="issuer">University of Pennsylvania</span>
+                                    <span
+                                    class="issue_date">Issued Oct 2014</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course col-6">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img class="issuer_logo" src="logos/johns-hopkins-vector-logo.svg"
+                                    alt="The Johns Hopkins University">
+                                </div>
+                                <div class="col-9 d-flex flex-column">
+                                    <span class="course_name">Getting and Cleaning
+                                    Data(with
+                                    Distinction)</span>
+                                    <span class="issuer">The Johns Hopkins University</span>
+                                    <span
+                                    class="issue_date">Issued Nov 2014</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course col-6">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img class="issuer_logo" src="logos/johns-hopkins-vector-logo.svg"
+                                    alt="The Johns Hopkins University">
+                                </div>
+                                <div class="col-9 d-flex flex-column">
+                                    <span class="course_name">Practical Machine Learning
+                                    (with Distinction)</span>
+                                    <span class="issuer">The Johns Hopkins University</span>
+                                    <span class="issue_date">Issued Sep 2014</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course col-6">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img class="issuer_logo" src="logos/johns-hopkins-vector-logo.svg"
+                                    alt="The Johns Hopkins University">
+                                </div>
+                                <div class="col-9 d-flex flex-column">
+                                    <span class="course_name">R Programming (with
+                                    Distinction)</span>
+                                    <span class="issuer">The Johns Hopkins University</span>
+                                    <span
+                                    class="issue_date">Issued Sep 2014</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course col-6">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img class="issuer_logo" src="logos/johns-hopkins-vector-logo.svg"
+                                    alt="The Johns Hopkins University">
+                                </div>
+                                <div class="col-9 d-flex flex-column">
+                                    <span class="course_name">The Data Scientist’s
+                                    Toolbox
+                                    (with Distinction)</span>
+                                    <span class="issuer">The Johns Hopkins University</span>
+                                    <span class="issue_date">Issued Sep 2014</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course col-6">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img class="issuer_logo" src="logos/google-vector-logo.svg" alt="Google">
+                                </div>
+                                <div class="col-9 d-flex flex-column">
+                                    <span class="course_name">Google DevFest
+                                    Participant</span>
+                                    <span class="issuer">Google</span>
+                                    <span
+                                    class="issue_date">Issued
+                                    Mar 2013</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="recommendations">
+                <div class="container">
+                    <h2>Recommendations</h2>
+
+                    <div class="project" v-for="item in recommendations">
+                        {{ item.message }}
+                        <h3 class="role">{{item.author}}</h3>
+                        <div class="row">
+                            <div class="col-4 d-flex flex-column">
+                                <span class="company-name">{{item.current_role}}</span>
+                                <span class="font-weight-light">{{item.relationship}}</span>
+                                <span class="dates">{{item.date}}</span>
+                            </div>
+                            <div class="col-8">
+                                <div style="white-space: pre-line">{{item.rec_text}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <script>
+            //start vue
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue!',
+                    eai_projects: [
+                        {
+                            "name": "Data Strategy",
+                            "company": "Confidencial Retail Company",
+                            "company_logo": "company_logo",
+                            "date": "2021 - 2022",
+                            "location": "Lisbon, Portugal",
+                            "description": "I led the data strategy in a large retail company. During this time we applied the FORCE methodology I've created.\nWe listed all data sources, defined OKRs, KPIs and initiatives. We prioritized initiatives according to the Principle of Constraints and the context of that particular company.\nI've also lead a number of analysis, including but not limited to consumer behaviour analysis, seasonality analysis, demand prediction together with stock analysis and prediction and a deep analysis on client's operations and quality control."
+                        }, {
+                            "name": "Data Strategy",
+                            "company": "Carlsberg",
+                            "company_logo": "company_logo",
+                            "date": "2019 - 2020",
+                            "location": "Copenhagen, Denmark",
+                            "description": "I was the data strategist for a major innovation project developed by Carlsberg.\nTogether with other colleagues from Enlightenment.ai we took large amounts of Carlsberg's data to generate relevant insights for restaurant owners.\nStrategically, I've helped identified relevant analysis by meeting with Carlsberg's leadership and its clients and managers from Hong Kong, Switzerland, Denmark and United Kingdom.\nTechnically, I led a number of different analysis: identification of relevant events, identification of trends, anomaly detection, product recommendation, consumer behaviour analysis and churn analysis, to name a few."
+                        }, {
+                            "name": "Fraud Detection with Machine Learning",
+                            "company": "Confidential Payment Processor",
+                            "company_logo": "company_logo",
+                            "date": "2019 - 2019",
+                            "location": "Lisbon, Portugal",
+                            "description": "I led a team of four data scientists in a major payment processor.\nWe replaced human-made fraud detection models by data-driven machine learning models, achieving record performance.\nThese models were trained automatically and integrated into IBM Safer Payments platform."
+                        }, {
+                            "name": "Data Scientist",
+                            "company": "ReachX",
+                            "company_logo": "company_logo",
+                            "date": "2017 - 2019",
+                            "location": "London, UK",
+                            "description": "Supervision of three other data scientists.\nDevelopment of data infrastructure and custom machine learning models in the financial industry. ReachX works with financial data such as the one provided by Refinitiv Eikon and Bloomberg terminal.\nWe built anomaly detection systems, tracked news and social media sentiment, and developed a number of other models to help our clients make better decisions."
+                        }
+                    ],
+                    'recommendations': [
+                        {
+                            "pic": "Benjamin Yuan profile picture",
+                            "author": "Benjamin Yuan",
+                            "current_role": "Machine Learning Engineering Manager, Recommendation at TikTok",
+                            "date": "Jan 12, 2023",
+                            "relationship": "Benjamin worked with Manuel on the same team",
+                            "rec_text": "I highly recommend Manuel for any strategic role in data science and AI.\nAs a co-founder, he demonstrated an exceptional ability to identify business opportunities and develop innovative solutions using data and AI. He is a valuable asset in any team."
+                        }, {
+                            "pic": "Gonçalo Rieff Montalvão profile picture",
+                            "author": "Gonçalo Rieff Montalvão",
+                            "current_role": "Performance Analyst at Galp Commercial",
+                            "date": "May 8, 2020",
+                            "relationship": "Gonçalo reported directly to Manuel",
+                            "rec_text": "I worked with Manuel at EAI in refining offerings and enhancing value creation.\nManuel is a highly effective professional with an ambitious and entrepreneurial mindset!"
+                        }, {
+                            "pic": "João Nuno Correia profile picture",
+                            "author": "João Nuno Correia",
+                            "current_role": "Assistant Professor at University of Coimbra",
+                            "date": "July 4, 2016",
+                            "relationship": "João Nuno managed Manuel directly",
+                            "rec_text": "Manuel is an organized, responsible and pro-active person, that impressed me with his exploratory and inventive skills.\nDuring our work in the SBIRC's Image feature extractor he learned different new concepts really fast, easily understanding the work already done which allowed him to actively contribute to the project.\nHe showed knowledge of machine learning, image and data processing skills, allied to excellent programming skills and ability to solve problems."
+                        }, {
+                            "pic": "Adriano Vinhas profile picture",
+                            "author": "Adriano Vinhas",
+                            "current_role": "Machine Learning Engineer at Captify || PhD student at University of Coimbra",
+                            "date": "July 4, 2016",
+                            "relationship": "Adriano worked with Manuel but on different teams",
+                            "rec_text": "I met Manuel while we were working in the same Lab.\nAt the time, we were both studying different machine learning techniques for image processing.  Manuel's autonomy and impressing problem-solving capabilities, along with his drive for self-improvement and openness to challenges made him a fast learner and one of the best people I ever met to work in a data science team."
+                        }, {
+                            "pic": "Shahram Mossayebi, Ph.D. profile picture",
+                            "author": "Shahram Mossayebi, Ph.D",
+                            "current_role": "Founder & CEO at Crypto Quantique",
+                            "date": "July 4, 2016",
+                            "relationship": "Shahram worked with Manuel on the same team",
+                            "rec_text": "Through various discussions Manuel comes across as a knowledgeable person with strong analytical skills.\nI found him an expert in coding and emerging technologies such as machine learning."
+                        }, {
+                            "pic": "Francisco Antunes profile picture",
+                            "author": "Francisco Antunes",
+                            "current_role": "Researcher | Data Science | Machine Learning",
+                            "date": "July 2, 2016",
+                            "relationship": "Francisco worked with Manuel on the same team",
+                            "rec_text": "I met Manuel at CISUC while he was a researcher there and working on his Master thesis.\nWe were both researchers within the same research lab. We used to regularly discuss many things and help each other either regarding his work or mine. These discussions were often heavily constructive and enlightening. Manuel always proved to be very pragmatic, analytical, objective-oriented and imaginative person, which undoubtedly makes him a skilful and resourceful colleague and professional.\nHe is also quite autonomous, as he is always able to work around unexpected problems with ease. \nIt was a pleasure to meet and work with Manuel. I hope we can collaborate again in the future."
+                        }, {
+                            "pic": "Stanislav Borysov profile picture",
+                            "author": "Stanislav Borysov",
+                            "current_role": "Senior Manager, Data Science at Vay",
+                            "date": "June 30, 2016",
+                            "relationship": "Stanislav was senior to Manuel but didn't manage Manuel directly",
+                            "rec_text": "I worked with Manuel at the MIT research center SMART in Singapore and can definitely recommend him as a knowledgable person and excellent team-player.\nDuring our collaborative work on various projects related to intelligent transportation systems, Manuel showed his deep knowledge of modern machine learning techniques, including clustering, regression, text classification and natural language processing, and successfully applied them to tackle real-world problems."
+                        }, {
+                            "pic": "Peter Kecskemethy profile picture",
+                            "author": "Peter Kecskemethy",
+                            "current_role": "CEO & co-founder, PhD",
+                            "date": "June 25, 2016",
+                            "relationship": "Peter worked with Manuel on the same team",
+                            "rec_text": "Manuel has been one of the greatest minds at EF - a definite problem solver and a great data scientist.\nHe is the kind of person I would be very happy to work with closer."
+                        }, {
+                            "pic": "Mariana Lourenço profile picture",
+                            "author": "Mariana Lourenço",
+                            "current_role": "Principal Data Scientist at RedLight",
+                            "date": "June 24, 2016",
+                            "relationship": "Mariana worked with Manuel on the same team",
+                            "rec_text": "It's rare to come across someone like Manuel.\nI had the pleasure of collaborating with Manuel when we were working for MIT in Singapore. It was impressive seeing him developing inventive ways to explore and model the transport datasets we had at our disposal. He's also a very pragmatic person, which helps in a lot of situations.\nManuel, either as a team member or a leader, earns my highest recommendation."
+                        }, {
+                            "pic": "Filipe Assunção profile picture",
+                            "author": "Filipe Assunção",
+                            "current_role": "Lead Research Scientist at OutSystems",
+                            "date": "November 6, 2015",
+                            "relationship": "Filipe worked with Manuel on the same team",
+                            "rec_text": "Manuel is a self-driven researcher, making him a vital member of the team he is working with.\nI had the pleasure to cooperate with Manuel in the Computational Design and Visualization Lab., CISUC, where the work he developed become of huge importance for my own tasks. He developed a powerful feature extractor for image-based evolution, with which I was later capable of evolving aesthetic images, mapped from Context Free Design Grammars, using a genetic programming approach."
+                        }
+                    ]
+                }
+            })
+        </script>
+    </body>
+
+</html>
